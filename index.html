@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>ROTA • MilhasHub</title>
+<title>ROTA</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -10,92 +10,114 @@
 
 <div class="app">
 
-<header>
-    <h1>✈️ ROTA • MilhasHub</h1>
-    <div id="globalInsight" class="insight"></div>
+<header class="header">
+    <div>
+        <h1>ROTA</h1>
+        <p>Controle inteligente de milhas</p>
+    </div>
 </header>
 
 <nav class="tabs">
-    <button onclick="showTab('saldo')">R • Saldo</button>
-    <button onclick="showTab('calc')">O/T • Calculadoras</button>
-    <button onclick="showTab('init')">A • Iniciantes</button>
+    <button class="active" onclick="showTab(event,'saldo')">Saldo</button>
+    <button onclick="showTab(event,'calc')">Decisão</button>
+    <button onclick="showTab(event,'learn')">Aprender</button>
 </nav>
 
 <main>
 
-<!-- SALDO -->
 <section id="saldo" class="tab active">
+
+<div class="card highlight">
+    <h2>Seu patrimônio em milhas</h2>
+    <div id="resumoPrincipal">Preencha seus pontos</div>
+</div>
 
 <div class="grid">
 
 <div class="card">
-<h3>Seus pontos</h3>
+<h3>Programas</h3>
 
-<div class="form-grid">
-<input type="number" id="azul" placeholder="Azul">
-<input type="number" id="latam" placeholder="Latam">
-<input type="number" id="smiles" placeholder="Smiles">
-<input type="number" id="livelo" placeholder="Livelo">
-<input type="number" id="esfera" placeholder="Esfera">
-<input type="number" id="c6" placeholder="C6">
+<input id="azul" placeholder="Azul">
+<input id="latam" placeholder="Latam">
+<input id="smiles" placeholder="Smiles">
+<input id="livelo" placeholder="Livelo">
+<input id="esfera" placeholder="Esfera">
+<input id="c6" placeholder="C6">
+
+<button onclick="calcularSaldo()">Atualizar</button>
 </div>
 
-<button onclick="calcularSaldo()">Calcular</button>
-
-<div id="resultadoSaldo" class="result"></div>
-<div id="insightSaldo" class="result"></div>
-<div id="recomendacaoSaldo" class="result"></div>
-
+<div class="card">
+<h3>Insights</h3>
+<div id="insightSaldo"></div>
+<div id="recomendacaoSaldo"></div>
 </div>
 
 </div>
+
 </section>
 
-<!-- CALCULADORAS -->
 <section id="calc" class="tab">
 
 <div class="grid">
 
 <div class="card">
 <h3>CPM</h3>
+<input id="valorPago" placeholder="Valor pago">
+<input id="pontos" placeholder="Pontos">
+<input id="bonus" placeholder="Bônus (%)">
 
-<input type="number" id="valorPago" placeholder="Valor pago (R$)">
-<input type="number" id="pontos" placeholder="Pontos recebidos">
-<input type="number" id="bonus" placeholder="Bônus (%)">
+<button onclick="calcularCPM()">Analisar</button>
 
-<button onclick="calcularCPM()">Calcular</button>
-
-<div id="resultadoCPM" class="result"></div>
-<div id="vereditoCPM" class="result"></div>
+<div id="resultadoCPM"></div>
+<div id="vereditoCPM"></div>
 </div>
 
 <div class="card">
 <h3>Emissão</h3>
+<input id="milheiros" placeholder="Milheiros">
+<input id="cpmUso" placeholder="CPM">
+<input id="precoDinheiro" placeholder="Preço dinheiro">
 
-<input type="number" id="milheiros" placeholder="Milheiros">
-<input type="number" id="cpmUso" placeholder="CPM">
-<input type="number" id="precoDinheiro" placeholder="Preço em dinheiro">
+<button onclick="calcularEmissao()">Comparar</button>
 
-<button onclick="calcularEmissao()">Calcular</button>
-
-<div id="resultadoEmissao" class="result"></div>
-<div id="vereditoEmissao" class="result"></div>
+<div id="resultadoEmissao"></div>
+<div id="vereditoEmissao"></div>
 </div>
 
 </div>
+
 </section>
 
-<!-- INICIANTES -->
-<section id="init" class="tab">
+<section id="learn" class="tab">
 
 <div class="card">
-<h3>Método ROTA</h3>
-<ul>
-<li><b>R:</b> Acumular pontos</li>
-<li><b>O:</b> Transferir com bônus</li>
-<li><b>T:</b> Escolher rota inteligente</li>
-<li><b>A:</b> Emitir passagem</li>
-</ul>
+<h2>Fundamentos</h2>
+<p><b>Milha = dinheiro.</b> Se você não mede, você perde.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Milheiro</h3>
+<p>1.000 pontos = 1 unidade de decisão</p>
+</div>
+
+<div class="card">
+<h3>CPM</h3>
+<p>Seu custo real por milheiro</p>
+</div>
+
+<div class="card">
+<h3>Bônus</h3>
+<p>Multiplica seus pontos</p>
+</div>
+
+<div class="card">
+<h3>Erro comum</h3>
+<p>Emitir sem calcular</p>
+</div>
+
 </div>
 
 </section>
